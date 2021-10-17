@@ -38,19 +38,19 @@ void quickSort(int A[], int low, int high){
 
 int main(){
     int n;
-    printf("enter the length of the array : ");
+    printf("Enter the length of array : ");
     scanf("%d",&n);
     
-    int A[n];
-    printf("enter the elements of the array : ");
+    int Arr[n];
+    printf("Enter the elements of the array : ");
     for(int i=0;i<n;i++){
-    	scanf("%d",&A[i]);
+    	scanf("%d",&Arr[i]);
 	}
 	
 	printf("\n---below is sorted array---\n");
-    quickSort(A, 0, n - 1);
+    quickSort(Arr, 0, n - 1);
     for(int i=0;i<n;i++){
-    	printf("%d ",A[i]);
+    	printf("%d ",Arr[i]);
 	}
     return 0;
 }
