@@ -1,10 +1,12 @@
 #include<stdio.h>
-int main(){
+#include<conio.h>
+void main(){
 	int n,minInd;
+	clrscr();
 	
-	printf("enter the number of elements : ");
+	printf("Enter The Number Of Elements :\n ");
 	scanf("%d",&n);
-	printf("enter the elements : ");
+	printf("Enter The Elements :\n ");
 	int a[n];
 	for(int i = 0; i<n; i++){
 		scanf("%d",&a[i]);
@@ -24,6 +26,6 @@ int main(){
 	for(int i = 0; i<n; i++){
 		printf("%2d ",a[i]);
 	}
+	getch();
 	
-	return 0;
 }
