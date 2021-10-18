@@ -1,268 +1,103 @@
-// C program to build the complete 
-// snake game 
-#include <conio.h> 
-#include <stdio.h> 
-#include <stdlib.h> 
-#include <unistd.h> 
-
-  
-
-int i, j, height = 20, width = 20; 
-
-int gameover, score; 
-
-int x, y, fruitx, fruity, flag; 
-
-  
-// Function to generate the fruit 
-// within the boundary 
-
-void setup() 
-{ 
-
-    gameover = 0; 
-
-  
-
-    // Stores height and width 
-
-    x = height / 2; 
-
-    y = width / 2; 
-label1: 
-
-    fruitx = rand() % 20; 
-
-    if (fruitx == 0) 
-
-        goto label1; 
-label2: 
-
-    fruity = rand() % 20; 
-
-    if (fruity == 0) 
-
-        goto label2; 
-
-    score = 0; 
-} 
-
-  
-// Function to draw the boundaries 
-
-void draw() 
-{ 
-
-    system("cls"); 
-
-    for (i = 0; i < height; i++) { 
-
-        for (j = 0; j < width; j++) { 
-
-            if (i == 0 || i == width - 1 
-
-                || j == 0 
-
-                || j == height - 1) { 
-
-                printf("#"); 
-
-            } 
-
-            else { 
-
-                if (i == x && j == y) 
-
-                    printf("0"); 
-
-                else if (i == fruitx 
-
-                         && j == fruity) 
-
-                    printf("*"); 
-
-                else
-
-                    printf(" "); 
-
-            } 
-
-        } 
-
-        printf("\n"); 
-
-    } 
-
-  
-
-    // Print the score after the 
-
-    // game ends 
-
-    printf("score = %d", score); 
-
-    printf("\n"); 
-
-    printf("press X to quit the game"); 
-} 
-
-  
-// Function to take the input 
-
-void input() 
-{ 
-
-    if (kbhit()) { 
-
-        switch (getch()) { 
-
-        case 'a': 
-
-            flag = 1; 
-
-            break; 
-
-        case 's': 
-
-            flag = 2; 
-
-            break; 
-
-        case 'd': 
-
-            flag = 3; 
-
-            break; 
-
-        case 'w': 
-
-            flag = 4; 
-
-            break; 
-
-        case 'x': 
-
-            gameover = 1; 
-
-            break; 
-
-        } 
-
-    } 
-} 
-
-  
-// Function for the logic behind 
-// each movement 
-
-void logic() 
-{ 
-
-    sleep(0.01); 
-
-    switch (flag) { 
-
-    case 1: 
-
-        y--; 
-
-        break; 
-
-    case 2: 
-
-        x++; 
-
-        break; 
-
-    case 3: 
-
-        y++; 
-
-        break; 
-
-    case 4: 
-
-        x--; 
-
-        break; 
-
-    default: 
-
-        break; 
-
-    } 
-
-  
-
-    // If the game is over 
-
-    if (x < 0 || x > height 
-
-        || y < 0 || y > width) 
-
-        gameover = 1; 
-
-  
-
-    // If snake reaches the fruit 
-
-    // then update the score 
-
-    if (x == fruitx && y == fruity) { 
-
-    label3: 
-
-        fruitx = rand() % 20; 
-
-        if (fruitx == 0) 
-
-            goto label3; 
-
-  
-
-    // After eating the above fruit 
-
-    // generate new fruit 
-
-    label4: 
-
-        fruity = rand() % 20; 
-
-        if (fruity == 0) 
-
-            goto label4; 
-
-        score += 10; 
-
-    } 
-} 
-
-  
-// Driver Code 
-
-int main() 
-{ 
-
-    int m, n; 
-
-  
-
-    // Generate boundary 
-
-    setup(); 
-
-  
-
-    // Until the game is over 
-
-    while (!gameover) {
-    	
-    	// Function Call 
-
-        draw();
-        input() ;
-        logic() ;
-    }
-
-} 
-   
+//Snakegame in Java
+// To represent a cell of display board.
+public class Cell {
+
+	private final int row, col;
+	private CellType cellType;
+
+	public Cell(int row, int col)
+	{
+		this.row = row;
+		this.col = col;
+	}
+
+	public CellType getCellType()
+	{
+		return cellType;
+	}
+
+	public void setCellType(CellType cellType)
+	{
+		this.cellType = cellType;
+	}
+
+	public int getRow()
+	{
+		return row;
+	}
+
+	public int getCol()
+	{
+		return col;
+	}
+}
+
+
+// Enum for different cell types
+
+public enum CellType {
+
+	EMPTY,
+	FOOD,
+	SNAKE_NODE;
+}
+
+
+// To represent a snake
+import java.util.LinkedList;
+
+public class Snake {
+
+	private LinkedList<Cell> snakePartList
+		= new LinkedList<>();
+	private Cell head;
+
+	public Snake(Cell initPos)
+	{
+		head = initPos;
+		snakePartList.add(head);
+		head.setCellType(CellType.SNAKE_NODE);
+	}
+
+	public void grow() { snakePartList.add(head); }
+
+	public void move(Cell nextCell)
+	{
+		System.out.println("Snake is moving to "
+						+ nextCell.getRow() + " "
+						+ nextCell.getCol());
+		Cell tail = snakePartList.removeLast();
+		tail.setCellType(CellType.EMPTY);
+
+		head = nextCell;
+		head.setCellType(CellType.SNAKE_NODE);
+		snakePartList.addFirst(head);
+	}
+
+	public boolean checkCrash(Cell nextCell)
+	{
+		System.out.println("Going to check for Crash");
+		for (Cell cell : snakePartList) {
+			if (cell == nextCell) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public LinkedList<Cell> getSnakePartList()
+	{
+		return snakePartList;
+	}
+
+	public void
+	setSnakePartList(LinkedList<Cell> snakePartList)
+	{
+		this.snakePartList = snakePartList;
+	}
+
+	public Cell getHead() { return head; }
+
+	public void setHead(Cell head) { this.head = head; }
+}
