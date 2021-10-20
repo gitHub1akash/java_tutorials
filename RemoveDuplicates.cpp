@@ -2,7 +2,7 @@
 
 int main(){
 	
-int n,i,temp[n],j=0,dup=0;
+int n,i,temp[n],j=0,d=0;
 
 
 printf("Enter the number of element : ");
@@ -18,11 +18,11 @@ for(i=0;i<n;i++){
 		j++;
 	}
 	else{
-		dup++;
+		d++;//implementing the next index
 	}
 }
 
-for(i = 0; i < n-dup; i++){
+for(i = 0; i < n-d; i++){
 	printf("%d ",temp[i]);
 }
 
