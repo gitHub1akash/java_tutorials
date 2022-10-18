@@ -4,7 +4,7 @@ void main(){
 	int n,minInd;
 	clrscr();
 	
-	printf("Enter The Number Of Elements :\n ");
+	printf("Number Of Elements :\n ");
 	scanf("%d",&n);
 	printf("Enter The Elements :\n ");
 	int a[n];
