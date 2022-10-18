@@ -3,17 +3,17 @@
 
 int main()
 {
-    double base, power, result;
+    double b, p, result;
 
     printf("Enter the base number: ");
-    scanf("%lf", &base);
+    scanf("%lf", &b);
 
     printf("Enter the power raised: ");
-    scanf("%lf",&power);
+    scanf("%lf",&p);
 
-    result = pow(base,power);
+    result = pow(b,p);
 
-    printf("%.1lf^%.1lf = %.2lf", base, power, result);
+    printf("%.1lf^%.1lf = %.2lf", b,p, result);
 
     return 0;
 }
