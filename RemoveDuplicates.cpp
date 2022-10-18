@@ -2,27 +2,27 @@
 
 int main(){
 	
-int n,i,temp[n],j=0,d=0;
+int l,i,temp[l],j=0,d=0;
 
 
-printf("Enter the number of element : ");
-scanf("%d",&n);
-int arr[n];
+printf("Enter the number of element in the array : ");
+scanf("%d",&l);
+int arr[l];
 printf("\nEnter the elements : ");
-for(i = 0; i < n; i++){
+for(i = 0; i < l; i++){
 	scanf("%d",&arr[i]);
 }
-for(i=0;i<n;i++){
+for(i=0;i<l;i++){
 	if(arr[i] != arr[i+1]){
 		temp[j] = arr[i];
 		j++;
 	}
 	else{
-		d++;//implementing the next index
+		d++;
 	}
 }
 
-for(i = 0; i < n-d; i++){
+for(i = 0; i < l-d; i++){
 	printf("%d ",temp[i]);
 }
 
