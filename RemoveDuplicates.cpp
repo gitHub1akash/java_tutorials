@@ -6,9 +6,11 @@ int l,i,temp[l],j=0,d=0;
 
 
 printf("Enter the number of element in the array : ");
+	//total number of elements in the array
 scanf("%d",&l);
 int arr[l];
 printf("\nEnter the elements : ");
+	//entering array elements
 for(i = 0; i < l; i++){
 	scanf("%d",&arr[i]);
 }
