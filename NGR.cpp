@@ -1,4 +1,4 @@
-// Nearest Greatest Right (NGR)
+//ngr
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -46,7 +46,7 @@ void fun_stack(int arr[],int n)
     cout<<"\nArray is\n";
     for(int i=0;i<n;i++)
         cout<<arr[i]<<" ";
-
+//print the nearest greatest element
     cout<<"\nNearest Greatest Element\n";
     for(int i=0;i<n;i++)
         cout<<v[i]<<" ";
