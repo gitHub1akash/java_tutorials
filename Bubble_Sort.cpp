@@ -1,20 +1,20 @@
 #include<iostream>
 using namespace std;
-void printArray(int *a,int n)
+void printArray(int *a,int k)
 {
-    for(int i=0;i<n;i++)
+    for(int i=0;i<k;i++)
     {
         cout<<a[i]<<" ";
     }
     cout<<endl;
 }
 
-void bubbleSort(int *a,int n)
+void bubbleSort(int *a,int k)
 {
     int temp;
-    for(int j=0;j< n-1;j++)
+    for(int j=0;j< k-1;j++)
     {
-        for(int i=0;i< n-1;i++)
+        for(int i=0;i< k-1;i++)
         {
             if(a[i]>a[i+1])
             {
@@ -25,16 +25,16 @@ void bubbleSort(int *a,int n)
         }
     }
 }
-void bubbleSortAdaptive(int *a,int n)
+void bubbleSortAdaptive(int *a,int k)
 {
     int temp;
     int isSorted=1;
-    for(int j=0;j< n-1;j++)
-    // for number of pass
+    for(int j=0;j< k-1;j++)
+   
     {
         cout<<"Program working on pass number "<<j+1<<endl;
-        for(int i=0;i< n-1;i++)
-        // for comparison in each pass
+        for(int i=0;i< k-1;i++)
+        
         {
             if(a[i]>a[i+1])
             {
@@ -46,6 +46,7 @@ void bubbleSortAdaptive(int *a,int n)
         }
         if(isSorted)
         {
+            //here we are returning a method
             return;
         }
     }
@@ -54,9 +55,9 @@ int main()
 {
     printf("We are learning about Algorithms\n");
      int array[6] ={30,60,10,50,20,40};
-    int n=6;
-    printArray(array,n);
-    bubbleSortAdaptive(array,n);
-    printArray(array,n);
+    int k=6;
+    printArray(array,k);
+    bubbleSortAdaptive(array,k);
+    printArray(array,k);
     return 0;
 }
