@@ -1,20 +1,20 @@
 #include<iostream>
 using namespace std;
-void printArray(int *a,int k)
+void printArray(int *a,int b)
 {
-    for(int i=0;i<k;i++)
+    for(int i=0;i<b;i++)
     {
         cout<<a[i]<<" ";
     }
     cout<<endl;
 }
 
-void bubbleSort(int *a,int k)
+void bubbleSort(int *a,int b)
 {
     int temp;
-    for(int j=0;j< k-1;j++)
+    for(int j=0;j< b-1;j++)
     {
-        for(int i=0;i< k-1;i++)
+        for(int i=0;i< b-1;i++)
         {
             if(a[i]>a[i+1])
             {
@@ -25,15 +25,15 @@ void bubbleSort(int *a,int k)
         }
     }
 }
-void bubbleSortAdaptive(int *a,int k)
+void bubbleSortAdaptive(int *a,int b)
 {
     int temp;
     int isSorted=1;
-    for(int j=0;j< k-1;j++)
+    for(int j=0;j< b-1;j++)
    
     {
         cout<<"Program working on pass number "<<j+1<<endl;
-        for(int i=0;i< k-1;i++)
+        for(int i=0;i< b-1;i++)
         
         {
             if(a[i]>a[i+1])
